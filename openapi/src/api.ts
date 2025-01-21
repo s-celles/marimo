@@ -2579,6 +2579,10 @@ export interface components {
         browser: "default" | string;
         follow_symlink: boolean;
       };
+      snippets?: {
+        custom_paths?: string[];
+        include_default_snippets?: boolean;
+      };
     };
     MarimoExceptionRaisedError: {
       exception_type: string;
@@ -2846,6 +2850,7 @@ export interface components {
     };
     UpdateCellCodes: {
       cell_ids: string[];
+      code_is_stale: boolean;
       codes: string[];
       /** @enum {string} */
       name: "update-cell-codes";

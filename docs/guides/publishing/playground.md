@@ -4,7 +4,7 @@ Our [online playground](https://marimo.app) lets you
 create and share marimo notebooks for free, without creating an account.
 
 Playground notebooks are great for embedding in other web pages — all the
-notebooks embedding in marimo's own docs are playground notebooks. They
+embedded notebooks in marimo's own docs are playground notebooks. They
 are also great for sharing via links.
 
 **Try our playground!** Just navigate to
@@ -20,9 +20,9 @@ _The notebook embedded below is a playground notebook!_
 
 <iframe src="https://marimo.app/l/upciwv?embed=true" width="100%" height=400 frameBorder="0"></iframe>
 
-## Creating and sharing WASM notebooks
+## Creating and sharing playground notebooks { #creating-and-sharing-playground-notebooks }
 
-WASM notebooks run at [marimo.app](https://marimo.app).
+Playground notebooks run at [marimo.app](https://marimo.app).
 
 ### New notebooks
 
@@ -48,9 +48,73 @@ notebook.
 
 Please be aware that marimo permalinks are publicly accessible.
 
-### Creating playground notebooks from GitHub
+### Open notebooks hosted on GitHub
 
-Use the "New > Open from URL" menu item to paste a link to a GitHub notebook.
+To open notebooks hosted on GitHub in the playground, just
+navigate to `https://marimo.app/path/to/notebook.py`. For example:
+<https://marimo.app/github.com/marimo-team/marimo/blob/main/examples/ui/slider.py>.
+
+!!! tip "Use our bookmarklet!"
+
+    For a convenient way to create notebooks from GitHub, drag and drop the
+    following button to your bookmarks bar:
+
+    <a href="javascript:(function(){if(!location.href.endsWith('.py')&&!location.href.endsWith('.ipynb')){alert('Please use this bookmarklet on a URL ending with .py or .ipynb');return;}let url=window.location.href.replace(/^https:\/\//,'');window.open('https://marimo.app/' + url, '_blank');})();"
+          style="padding: 5px 10px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">
+    Open in marimo
+    </a>
+
+    Clicking the bookmark when you are viewing a notebook will
+    open it in [marimo.app](https://marimo.app/).
+
+!!! tip "From Jupyter notebooks"
+
+    You can also create Playground notebooks from Jupyter notebooks hosted
+    on GitHub. marimo will attempt to automatically convert the notebook
+    to a marimo notebook.
+
+#### Including data files
+
+Notebooks created from GitHub links have the entire contents of the repository
+mounted into the notebook's filesystem. This lets you work with files
+using regular Python file I/O!
+
+When constructing paths to data files, make sure to use
+[`mo.notebook_dir()`][marimo.notebook_dir] to ensure that paths work both
+locally and in the playground.
+
+!!! example "Example"
+
+    Navigate to
+
+    <https://marimo.app/github.com/marimo-team/marimo/blob/main/examples/misc/notebook_dir.py>
+
+    and open the file explorer panel to see all the files available to the notebook.
+
+#### Open in marimo badge
+
+Include an "open in marimo" badge in your README to link to playground
+notebooks hosted on GitHub:
+
+[![Open with marimo](https://marimo.io/shield.svg)](https://marimo.app/GITHUB_URL)
+
+=== "Markdown"
+
+     Replace `GITHUB_URL` with the URL to a notebook on GitHub.
+
+     ```markdown
+     [![Open with marimo](https://marimo.io/shield.svg)](https://marimo.app/GITHUB_URL)
+     ```
+
+=== "HTML"
+
+     Replace `GITHUB_URL` with the URL to a notebook on GitHub.
+
+     ```html
+     <a href="https://marimo.app/GITHUB_URL" target="_blank">
+         <img alt="Open in marimo" src="https://marimo.io/shield.svg" />
+     </a>
+     ```
 
 ### Creating playground notebooks from local notebooks
 
@@ -59,7 +123,8 @@ link` to get a `marimo.app/...` URL representing your notebook:
 
 <div align="center">
 <figure>
-<img src="/_static/share-wasm-link.gif"/>
+<video autoplay muted loop width="100%" height="100%" align="center" src="/_static/share-wasm-link.webm">
+</video>
 </figure>
 </div>
 
@@ -132,7 +197,7 @@ providing your users with an interactive code playground.
 ### Embedding an existing notebook
 
 To embed existing marimo notebooks into a webpage, first, [obtain a
-URL to your notebook](#creating-and-sharing-wasm-notebooks), then put it in an iframe.
+URL to your notebook](#creating-and-sharing-playground-notebooks), then put it in an iframe.
 
 ```html
 <iframe

@@ -24,7 +24,7 @@ traditional client-server model. WASM notebooks:
     with code and models, doing lightweight data exploration, authoring blog
     posts, tutorials, and educational materials, and even building tools. For
     notebooks that do heavy computation, [use marimo
-    locally](http://127.0.0.1:8000/getting_started/) or on a backend.
+    locally](../getting_started/index.md) or on a backend.
 
 **Try it!** Try editing the below notebook (your browser, not a backend server, is executing it!)
 
@@ -96,7 +96,6 @@ documentation on supported packages.](https://pyodide.org/en/stable/usage/packag
 
 If you want a package to be supported, consider [filing an issue](https://github.com/pyodide/pyodide/issues/new?assignees=&labels=new+package+request&projects=&template=package_request.md&title=).
 
-
 ## Including data
 
 **For notebooks exported to WASM HTML.**
@@ -114,7 +113,7 @@ your data:
 import polars as pl
 
 path_to_csv = mo.notebook_location() / "public" / "data.csv"
-df = pl.read_csv(path_to_csv)
+df = pl.read_csv(str(path_to_csv))
 df.head()
 ```
 
@@ -125,9 +124,10 @@ hosted, you may need to use a CORS Proxy; see the [Pyodide
 documentation](https://pyodide.org/en/stable/usage/loading-packages.html#installing-wheels-from-arbitrary-urls)
 for more details.
 
-**Playground notebooks.** When opening [playground notebook](publishing/playground.md)
-from GitHub, the data files in the notebook directory are automatically
-downloaded and made available to your notebook.
+**Playground notebooks.** When opening a playground
+notebook from GitHub, all the files in the GitHub repo are made available to
+your notebook. See the [Playground
+Guide](publishing/playground.md#including-data-files) for more info.
 
 **Community Cloud notebooks.** Our free [Community
 Cloud](publishing/community_cloud/index.md) lets you upload a limited
